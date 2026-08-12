@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
-import API from "../../api/axios";
+import API from "../../Api/axios.js";
 
 // ─── Inline Styles ────────────────────────────────────────────────────────────
 const styles = `
@@ -483,7 +483,9 @@ function CheckoutPage() {
                   <span className="badge">1</span>
                   Delivery Address
                 </h2>
-                <p className="card-subtitle">Where should we send your order?</p>
+                <p className="card-subtitle">
+                  Where should we send your order?
+                </p>
 
                 <div className="field-grid">
                   <div className="field-wrap">
@@ -568,16 +570,24 @@ function CheckoutPage() {
                     <input type="radio" value="cod" {...register("payment")} />
                     <div className="radio-label">
                       <div className="radio-title">Cash on Delivery</div>
-                      <div className="radio-sub">Pay when your order arrives</div>
+                      <div className="radio-sub">
+                        Pay when your order arrives
+                      </div>
                     </div>
                     <span className="radio-tag">COD</span>
                   </label>
 
                   <label className="payment-radio">
-                    <input type="radio" value="online" {...register("payment")} />
+                    <input
+                      type="radio"
+                      value="online"
+                      {...register("payment")}
+                    />
                     <div className="radio-label">
                       <div className="radio-title">Online Payment</div>
-                      <div className="radio-sub">UPI, Cards, Net Banking via Razorpay</div>
+                      <div className="radio-sub">
+                        UPI, Cards, Net Banking via Razorpay
+                      </div>
                     </div>
                     <span className="radio-tag">Secure</span>
                   </label>
