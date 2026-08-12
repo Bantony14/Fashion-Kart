@@ -1,7 +1,7 @@
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import Logo from "../logo/Logo";
-import API from "../Api/axios.js";
+import APIs from "../Api/axios.js";
 import { useState } from "react";
 
 function SignUpPage() {
@@ -21,7 +21,7 @@ function SignUpPage() {
     setApiError("");
 
     try {
-      await API.post("/auth/register", {
+      await APIs.post("/auth/register", {
         name: data.name,
         email: data.email,
         password: data.password,
