@@ -1,7 +1,7 @@
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import Logo from "../logo/Logo";
-import API from "../../api/axios";
+import API from "../Api/axios.js";
 import { useState } from "react";
 
 function SignUpPage() {
@@ -28,7 +28,6 @@ function SignUpPage() {
       });
 
       navigate("/loginPage");
-
     } catch (error) {
       setApiError(error.response?.data?.message || "Signup failed");
     }
@@ -37,7 +36,6 @@ function SignUpPage() {
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100 px-4">
       <div className="w-full max-w-md bg-white rounded-xl p-8 shadow-sm">
-
         <div className="flex flex-col items-center mb-4">
           <h1 className="text-2xl font-semibold">Create Account</h1>
           <Logo />
@@ -48,7 +46,6 @@ function SignUpPage() {
         </p>
 
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
-
           {/* Backend Error */}
           {apiError && (
             <p className="text-red-500 text-sm text-center">{apiError}</p>
@@ -86,7 +83,9 @@ function SignUpPage() {
                 minLength: { value: 6, message: "Min 6 characters" },
               })}
             />
-            {errors.password && <p className="error">{errors.password.message}</p>}
+            {errors.password && (
+              <p className="error">{errors.password.message}</p>
+            )}
           </div>
 
           {/* Confirm Password */}
