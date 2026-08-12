@@ -1,0 +1,33 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Poppins", system-ui, -apple-system, sans-serif;
+}
+
+.input {
+  @apply w-full border rounded-lg px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-gray-900;
+}
+
+.error {
+  @apply text-xs text-red-500 mt-1;
+}
+
+.payment-radio {
+  @apply flex items-center gap-3 p-3 border rounded-lg cursor-pointer hover:border-gray-900;
+}
+
+.provider {
+  @apply border rounded-lg py-2 text-sm font-medium capitalize bg-white;
+}
+
+.provider-active {
+  @apply bg-gray-900 text-white border-gray-900;
+}
+
+.tab {
+  @apply text-gray-500;
+}
+
+.active-tab {
+  @apply text-gray-900 border-b-2 border-gray-900;
+}
