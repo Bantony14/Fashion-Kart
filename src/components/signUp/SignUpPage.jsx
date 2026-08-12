@@ -1,7 +1,7 @@
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import Logo from "../logo/Logo";
-import APIs from "../Api/axios.js";
+import APIs from "../../Api/axios";
 import { useState } from "react";
 
 function SignUpPage() {
