@@ -1,7 +1,7 @@
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import Logo from "../logo/Logo";
-import API from "../../api/axios";
+import API from "../../Api/axios.js";
 import { useState } from "react";
 
 function LoginPage() {
@@ -29,7 +29,6 @@ function LoginPage() {
 
       navigate("/");
       window.location.reload(); // refresh header state
-
     } catch (error) {
       setApiError(error.response?.data?.message || "Login failed");
     }
@@ -38,7 +37,6 @@ function LoginPage() {
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100 px-4">
       <div className="w-full max-w-md bg-white rounded-xl p-8 shadow-sm">
-
         <h1 className="flex justify-center items-center mb-2">
           <Logo />
         </h1>
@@ -48,7 +46,6 @@ function LoginPage() {
         </p>
 
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
-
           {/* Backend error */}
           {apiError && (
             <p className="text-red-500 text-sm text-center">{apiError}</p>
@@ -71,7 +68,9 @@ function LoginPage() {
               className="input"
               {...register("password", { required: "Password required" })}
             />
-            {errors.password && <p className="error">{errors.password.message}</p>}
+            {errors.password && (
+              <p className="error">{errors.password.message}</p>
+            )}
           </div>
 
           <button className="w-full bg-gray-900 text-white py-3 rounded-lg font-medium hover:bg-gray-800">
