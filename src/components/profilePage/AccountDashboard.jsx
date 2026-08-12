@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import API from "../../Api/axios.js";
+import APIs from "../../Api/axios.js";
 import { useNavigate } from "react-router-dom";
 
 function AccountDashboard() {
@@ -14,7 +14,7 @@ function AccountDashboard() {
   useEffect(() => {
     const fetchOrders = async () => {
       try {
-        const res = await API.get("/orders/my-orders");
+        const res = await APIs.get("/orders/my-orders");
         setOrders(res.data);
       } catch (err) {
         console.log("orders error", err);
@@ -30,7 +30,7 @@ function AccountDashboard() {
       if (!token) return navigate("/loginPage");
 
       try {
-        const res = await API.get("/auth/profile");
+        const res = await APIs.get("/auth/profile");
         setUser(res.data);
       } catch (err) {
         console.log("profile error", err);
@@ -48,7 +48,7 @@ function AccountDashboard() {
 
   const handleUpdate = async () => {
     try {
-      const res = await API.put("/auth/update", form);
+      const res = await APIs.put("/auth/update", form);
       setUser(res.data);
       setEdit(false);
     } catch {
@@ -63,7 +63,7 @@ function AccountDashboard() {
 
     reader.onloadend = async () => {
       try {
-        const res = await API.put("/auth/avatar", {
+        const res = await APIs.put("/auth/avatar", {
           avatar: reader.result,
         });
         setUser(res.data);
