@@ -2,7 +2,7 @@ import axios from "axios";
 
 const API = axios.create({
   // baseURL: "http://localhost:5000/api",
-  baseURL: `https://fashion-kart-production.up.railway.app${"/api"}`,
+  baseURL: `https://fashion-kart-production.up.railway.app/api`,
 });
 
 API.interceptors.request.use((req) => {
