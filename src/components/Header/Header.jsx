@@ -42,102 +42,93 @@ function Header() {
   return (
     <header className="w-full bg-white border-b border-gray-200 fixed top-0 left-0 z-50 shadow-sm">
       <div className="max-w-7xl mx-auto px-4 h-[72px] flex items-center justify-between gap-6">
-
         {/* Logo */}
         <Link to="/">
           <Logo />
         </Link>
 
-        {/* Search */}
-        <div className="flex-1 max-w-xl flex items-center bg-gray-100 rounded-lg overflow-hidden">
-          <Input
-            placeholder="Search Product"
-            classname="flex-1 px-4 py-2 bg-transparent focus:outline-none text-sm placeholder:text-gray-400"
-          />
-          <button className="px-4 py-2 bg-blue-600 text-white hover:bg-blue-700">
-            <Search size={18} />
-          </button>
-        </div>
-
         {/* Right actions */}
         <div className="flex items-center gap-5 text-sm font-medium">
-
           {/* Auth */}
           {user ? (
             <div className="flex items-center gap-4">
-             <div className="flex items-center gap-2">
+              <div className="flex items-center gap-2">
+                <Link to="profilePage">
+                  <img
+                    src={user.avatar || "https://i.pravatar.cc/100"}
+                    alt="profile"
+                    className="w-8 h-8 rounded-full object-cover"
+                  />
+                </Link>
 
-   <Link to='profilePage'>
-  <img
-    src={user.avatar  || "https://i.pravatar.cc/100"}
-    alt="profile"
-    className="w-8 h-8 rounded-full object-cover"
-  />
-  </Link>
-
-  <p className="font-medium">Hi, {user.name}</p>
-</div>
+                <p className="font-medium">Hi, {user.name}</p>
+              </div>
               <button
                 onClick={handleLogout}
                 className="bg-black text-white px-3 py-1 rounded"
               >
                 Logout
               </button>
-              
             </div>
           ) : (
             <div className="flex gap-4">
-              <NavLink to="/loginPage">  <button className="
+              <NavLink to="/loginPage">
+                {" "}
+                <button
+                  className="
               bg-blue-600 text-white px-4 py-2 rounded-md cursor-pointer
               hover:bg-blue-700 transition
-            ">
-              Login
-            </button></NavLink>
-              <NavLink to="/signuppage"> <button className="
+            "
+                >
+                  Login
+                </button>
+              </NavLink>
+              <NavLink to="/signuppage">
+                {" "}
+                <button
+                  className="
               bg-blue-600 text-white px-4 py-2 rounded-md cursor-pointer
               hover:bg-blue-700 transition
-            ">
-              Signup
-            </button></NavLink>
+            "
+                >
+                  Signup
+                </button>
+              </NavLink>
             </div>
           )}
 
           {/* Wishlist */}
-           <NavLink 
-          to='/wishlist'
-           className={({ isActive }) =>
-                                        `block py-2 pr-4 pl-3 duration-200 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 hover:text-orange-700 
+          <NavLink
+            to="/wishlist"
+            className={({ isActive }) =>
+              `block py-2 pr-4 pl-3 duration-200 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 hover:text-orange-700 
                                      ${isActive ? "text-orange-700" : "text-gray-700"}
                                     lg:p-0`
-                                    }
+            }
           >
-
-          <button className="relative hover:text-primary cursor-pointer">
-            <Heart size={22} />
-            <span className="absolute -top-1 -right-2 text-[10px] bg-red-500 text-white rounded-full px-1">
-             {wishLength}
-            </span>
-          </button>
-          
+            <button className="relative hover:text-primary cursor-pointer">
+              <Heart size={22} />
+              <span className="absolute -top-1 -right-2 text-[10px] bg-red-500 text-white rounded-full px-1">
+                {wishLength}
+              </span>
+            </button>
           </NavLink>
 
           {/* Cart */}
-          <NavLink 
-          to='/cart'
-           className={({ isActive }) =>
-                                        `block py-2 pr-4 pl-3 duration-200 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 hover:text-orange-700 
+          <NavLink
+            to="/cart"
+            className={({ isActive }) =>
+              `block py-2 pr-4 pl-3 duration-200 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 hover:text-orange-700 
                                      ${isActive ? "text-orange-700" : "text-gray-700"}
                                     lg:p-0`
-                                    }
+            }
           >
-
-          <button className="relative hover:text-primary cursor-pointer">
-            <ShoppingCart size={22} />
-            <span className="absolute -top-1 -right-2 text-[10px] bg-red-500 text-white rounded-full px-1">
-             {cartLength}
-            </span>
-          </button>
-          
+            <button className="relative hover:text-primary cursor-pointer">
+              <ShoppingCart size={22} />
+              <span className="absolute -top-1 -right-2 text-[10px] bg-red-500 text-white rounded-full px-1">
+                {cartLength}
+              </span>
+            </button>
           </NavLink>
         </div>
       </div>
