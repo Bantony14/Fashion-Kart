@@ -411,7 +411,7 @@ function CheckoutPage() {
     });
 
     const options = {
-      key: import.meta.env.VITE_RAZORPAY_KEY,
+      key: import.meta.env.VITE_RAZORPAY_KEY_ID,
       amount: data.amount,
       currency: "INR",
       name: "FashionKart",
