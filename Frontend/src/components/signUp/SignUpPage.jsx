@@ -34,11 +34,15 @@ function SignUpPage() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100 px-4">
-      <div className="w-full max-w-md bg-white rounded-xl p-8 shadow-sm">
+    <div className="min-h-screen flex items-center justify-center bg-gray-100 px-4 py-8">
+      <div className="w-full max-w-md bg-white rounded-xl p-5 sm:p-8 shadow-sm">
+        {/* Heading + Logo */}
         <div className="flex flex-col items-center mb-4">
-          <h1 className="text-2xl font-semibold">Create Account</h1>
-          <Logo />
+          <h1 className="text-xl sm:text-2xl font-semibold">Create Account</h1>
+
+          <div className="mt-2">
+            <Logo />
+          </div>
         </div>
 
         <p className="text-sm text-gray-500 text-center mb-6">
@@ -55,10 +59,13 @@ function SignUpPage() {
           <div>
             <input
               placeholder="Full Name"
-              className="input"
-              {...register("name", { required: "Name is required" })}
+              className="input w-full"
+              {...register("name", {
+                required: "Name is required",
+              })}
             />
-            {errors.name && <p className="error">{errors.name.message}</p>}
+
+            {errors.name && <p className="error mt-1">{errors.name.message}</p>}
           </div>
 
           {/* Email */}
@@ -66,10 +73,15 @@ function SignUpPage() {
             <input
               type="email"
               placeholder="Email"
-              className="input"
-              {...register("email", { required: "Email is required" })}
+              className="input w-full"
+              {...register("email", {
+                required: "Email is required",
+              })}
             />
-            {errors.email && <p className="error">{errors.email.message}</p>}
+
+            {errors.email && (
+              <p className="error mt-1">{errors.email.message}</p>
+            )}
           </div>
 
           {/* Password */}
@@ -77,14 +89,18 @@ function SignUpPage() {
             <input
               type="password"
               placeholder="Password"
-              className="input"
+              className="input w-full"
               {...register("password", {
                 required: "Password required",
-                minLength: { value: 6, message: "Min 6 characters" },
+                minLength: {
+                  value: 6,
+                  message: "Min 6 characters",
+                },
               })}
             />
+
             {errors.password && (
-              <p className="error">{errors.password.message}</p>
+              <p className="error mt-1">{errors.password.message}</p>
             )}
           </div>
 
@@ -93,26 +109,46 @@ function SignUpPage() {
             <input
               type="password"
               placeholder="Confirm Password"
-              className="input"
+              className="input w-full"
               {...register("confirmPassword", {
                 required: "Confirm password required",
                 validate: (value) =>
                   value === password || "Passwords do not match",
               })}
             />
+
             {errors.confirmPassword && (
-              <p className="error">{errors.confirmPassword.message}</p>
+              <p className="error mt-1">{errors.confirmPassword.message}</p>
             )}
           </div>
 
-          <button className="w-full bg-gray-900 text-white py-3 rounded-lg font-medium hover:bg-gray-800">
+          {/* Sign Up */}
+          <button
+            type="submit"
+            className="
+            w-full
+            bg-gray-900
+            text-white
+            py-2.5 sm:py-3
+            rounded-lg
+            font-medium
+            text-sm sm:text-base
+            hover:bg-gray-800
+            transition
+            cursor-pointer
+          "
+          >
             Sign Up
           </button>
         </form>
 
+        {/* Login */}
         <p className="text-sm text-center text-gray-500 mt-6">
           Already have an account?{" "}
-          <Link to="/loginPage" className="font-medium text-gray-900">
+          <Link
+            to="/loginPage"
+            className="font-medium text-gray-900 hover:underline"
+          >
             Login
           </Link>
         </p>

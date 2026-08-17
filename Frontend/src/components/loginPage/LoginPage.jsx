@@ -35,11 +35,12 @@ function LoginPage() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100 px-4">
-      <div className="w-full max-w-md bg-white rounded-xl p-8 shadow-sm">
-        <h1 className="flex justify-center items-center mb-2">
+    <div className="min-h-screen flex items-center justify-center bg-gray-100 px-4 py-8">
+      <div className="w-full max-w-md bg-white rounded-xl p-5 sm:p-8 shadow-sm">
+        {/* Logo */}
+        <div className="flex justify-center mb-2">
           <Logo />
-        </h1>
+        </div>
 
         <p className="text-sm text-gray-500 text-center mb-6">
           Login to continue
@@ -51,36 +52,65 @@ function LoginPage() {
             <p className="text-red-500 text-sm text-center">{apiError}</p>
           )}
 
+          {/* Email */}
           <div>
             <input
               type="email"
               placeholder="Email"
-              className="input"
-              {...register("email", { required: "Email required" })}
+              className="input w-full"
+              {...register("email", {
+                required: "Email required",
+              })}
             />
-            {errors.email && <p className="error">{errors.email.message}</p>}
+
+            {errors.email && (
+              <p className="error mt-1">{errors.email.message}</p>
+            )}
           </div>
 
+          {/* Password */}
           <div>
             <input
               type="password"
               placeholder="Password"
-              className="input"
-              {...register("password", { required: "Password required" })}
+              className="input w-full"
+              {...register("password", {
+                required: "Password required",
+              })}
             />
+
             {errors.password && (
-              <p className="error">{errors.password.message}</p>
+              <p className="error mt-1">{errors.password.message}</p>
             )}
           </div>
 
-          <button className="w-full bg-gray-900 text-white py-3 rounded-lg font-medium hover:bg-gray-800">
+          {/* Login */}
+          <button
+            type="submit"
+            className="
+            w-full
+            bg-gray-900
+            text-white
+            py-2.5 sm:py-3
+            rounded-lg
+            font-medium
+            text-sm sm:text-base
+            hover:bg-gray-800
+            transition
+            cursor-pointer
+          "
+          >
             Login
           </button>
         </form>
 
+        {/* Signup */}
         <p className="text-sm text-center text-gray-500 mt-6">
           Don’t have an account?{" "}
-          <Link to="/signuppage" className="font-medium text-gray-900">
+          <Link
+            to="/signuppage"
+            className="font-medium text-gray-900 hover:underline"
+          >
             Sign up
           </Link>
         </p>

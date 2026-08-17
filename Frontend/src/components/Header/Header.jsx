@@ -41,55 +41,68 @@ function Header() {
 
   return (
     <header className="w-full bg-white border-b border-gray-200 fixed top-0 left-0 z-50 shadow-sm">
-      <div className="max-w-7xl mx-auto px-4 h-[72px] flex items-center justify-between gap-6">
+      <div className="max-w-7xl mx-auto px-3 sm:px-4 h-[64px] sm:h-[72px] flex items-center justify-between gap-3">
         {/* Logo */}
-        <Link to="/">
+        <Link to="/" className="shrink-0">
           <Logo />
         </Link>
 
-        {/* Right actions */}
-        <div className="flex items-center gap-5 text-sm font-medium">
+        {/* Right Actions */}
+        <div className="flex items-center gap-3 sm:gap-5 text-sm font-medium">
           {/* Auth */}
           {user ? (
-            <div className="flex items-center gap-4">
-              <div className="flex items-center gap-2">
-                <Link to="profilePage">
-                  <img
-                    src={user.avatar || "https://i.pravatar.cc/100"}
-                    alt="profile"
-                    className="w-8 h-8 rounded-full object-cover"
-                  />
-                </Link>
+            <div className="flex items-center gap-2 sm:gap-4">
+              {/* Profile */}
+              <Link to="/profilePage" className="flex items-center gap-2">
+                <img
+                  src={user.avatar || "https://i.pravatar.cc/100"}
+                  alt="profile"
+                  className="w-8 h-8 sm:w-9 sm:h-9 rounded-full object-cover"
+                />
 
-                <p className="font-medium">Hi, {user.name}</p>
-              </div>
+                {/* Hide name on mobile */}
+                <p className="hidden sm:block font-medium">Hi, {user.name}</p>
+              </Link>
+
+              {/* Logout */}
               <button
                 onClick={handleLogout}
-                className="bg-black text-white px-3 py-1 rounded"
+                className="bg-black text-white px-2.5 py-1.5 sm:px-3 sm:py-2 rounded text-xs sm:text-sm cursor-pointer"
               >
                 Logout
               </button>
             </div>
           ) : (
-            <div className="flex gap-4">
+            <div className="flex items-center gap-2 sm:gap-3">
               <NavLink to="/loginPage">
-                {" "}
                 <button
                   className="
-              bg-blue-600 text-white px-4 py-2 rounded-md cursor-pointer
-              hover:bg-blue-700 transition
-            "
+                  bg-blue-600 text-white
+                  px-2.5 py-1.5
+                  sm:px-4 sm:py-2
+                  rounded-md
+                  text-xs sm:text-sm
+                  cursor-pointer
+                  hover:bg-blue-700
+                  transition
+                "
                 >
                   Login
                 </button>
               </NavLink>
+
               <NavLink to="/signuppage">
-                {" "}
                 <button
                   className="
-              bg-blue-600 text-white px-4 py-2 rounded-md cursor-pointer
-              hover:bg-blue-700 transition
-            "
+                  bg-blue-600 text-white
+                  px-2.5 py-1.5
+                  sm:px-4 sm:py-2
+                  rounded-md
+                  text-xs sm:text-sm
+                  cursor-pointer
+                  hover:bg-blue-700
+                  transition
+                "
                 >
                   Signup
                 </button>
@@ -98,37 +111,25 @@ function Header() {
           )}
 
           {/* Wishlist */}
-          <NavLink
-            to="/wishlist"
-            className={({ isActive }) =>
-              `block py-2 pr-4 pl-3 duration-200 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 hover:text-orange-700 
-                                     ${isActive ? "text-orange-700" : "text-gray-700"}
-                                    lg:p-0`
-            }
-          >
-            <button className="relative hover:text-primary cursor-pointer">
-              <Heart size={22} />
-              <span className="absolute -top-1 -right-2 text-[10px] bg-red-500 text-white rounded-full px-1">
+          <NavLink to="/wishlist">
+            <div className="relative text-gray-700 hover:text-orange-700 cursor-pointer">
+              <Heart size={20} className="sm:w-[22px] sm:h-[22px]" />
+
+              <span className="absolute -top-2 -right-2 text-[9px] sm:text-[10px] bg-red-500 text-white rounded-full min-w-[15px] h-[15px] flex items-center justify-center px-1">
                 {wishLength}
               </span>
-            </button>
+            </div>
           </NavLink>
 
           {/* Cart */}
-          <NavLink
-            to="/cart"
-            className={({ isActive }) =>
-              `block py-2 pr-4 pl-3 duration-200 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 hover:text-orange-700 
-                                     ${isActive ? "text-orange-700" : "text-gray-700"}
-                                    lg:p-0`
-            }
-          >
-            <button className="relative hover:text-primary cursor-pointer">
-              <ShoppingCart size={22} />
-              <span className="absolute -top-1 -right-2 text-[10px] bg-red-500 text-white rounded-full px-1">
+          <NavLink to="/cart">
+            <div className="relative text-gray-700 hover:text-orange-700 cursor-pointer">
+              <ShoppingCart size={20} className="sm:w-[22px] sm:h-[22px]" />
+
+              <span className="absolute -top-2 -right-2 text-[9px] sm:text-[10px] bg-red-500 text-white rounded-full min-w-[15px] h-[15px] flex items-center justify-center px-1">
                 {cartLength}
               </span>
-            </button>
+            </div>
           </NavLink>
         </div>
       </div>

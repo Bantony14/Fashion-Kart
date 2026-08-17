@@ -1,26 +1,9 @@
-import { useId } from "react"
+import { useId } from "react";
 
-function Input({
-type = "text",
-classname = "",
-...props
+function Input({ type = "text", classname = "", ...props }) {
+  const id = useId();
 
-}){
-    const id = useId()
-
-    return(
-
-        <input
-        className={classname}
-        type={type}
-        id = {id}
-        {...props}
-        
-        
-        
-        />
-    )
-
+  return <input className={classname} type={type} id={id} {...props} />;
 }
 
-export default Input
+export default Input;
